@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cita.component.css">
+    <title>Mantenimiento Nueva Cita</title>
+</head>
+<body>
+    <h1>Mantenimiento Nueva Cita</h1>
+    <br>
+    <div class="container">      
+        <div class="card form-container">
+            <div class="card-body">
+                <form [formGroup]="formCita" (ngSubmit)="AgregarCita()">
+                  
+                    <div class="form-group">
+                        <label class="form-label">Fecha:</label>
+                        <input type="text" class="form-control" name="fecha_cita" formControlName="fecha_cita">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Codigo Cliente:</label>
+                        <select class="form-control" formControlName="codigo_cliente">
+                            <option value="1">1</option>  
+                            <option value="2">2</option>
+                            <option value="3">3</option> 
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Codigo Veterinario:</label>
+                        <select class="form-control" formControlName="codigo_veterinario">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Codigo Mascota:</label>
+                        <select class="form-control" formControlName="codigo_mascota">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                          </select>
+                    </div>
+                 
+                    <button class="btn btn-primary mt-2">Agregar</button>
+                    <button type="button" class="btn btn-primary mt-2" (click)="ActualizarCita()">Actualizar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="list-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Código Cliente</th>
+                        <th scope="col">Código Veterinario</th>
+                        <th scope="col">Código Mascota</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elemento of dataCita">
+                        <th scope="row">{{elemento.codigo_cita}}</th>
+                        <td>{{elemento.fecha_cita}}</td>
+                        <td>{{elemento.codigo_cliente}}</td>
+                        <td>{{elemento.codigo_veterinario}}</td>
+                        <td>{{elemento.codigo_mascota}}</td>
+                        <td>
+                            <button class="mt-2" (click)="editarCita(elemento)">
+                                <img src="assets/img/editar.png" width="50" height="30" alt="Editar" />
+                            </button>
+                       
+                            <button class="mt-2" (click)="eliminar(elemento.codigo_cita)">
+                                <img src="assets/img/eliminar.jpg" width="50" height="30" alt="Eliminar" /> 
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

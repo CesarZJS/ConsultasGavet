@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="veterinario.component.css">
+    <title>Mantenimiento veterinario</title>
+</head>
+<body>
+    <h1>Mantenimiento Veterinario</h1>
+    <br>
+    <div class="container">     
+        <div class="card form-container">
+            <div class="card-body">
+                <form [formGroup]="formVeterinario" (ngSubmit)="AgregarVeterinario()">
+                  
+                    <div class="form-group">
+                        <label class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" name="nombre_veterinario" formControlName="nombre_veterinario">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Domicilio:</label>
+                        <input type="text" class="form-control" name="domicilio_veterinario" formControlName="domicilio_veterinario">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Escuela:</label>
+                        <input type="text" class="form-control" name="escuela_veterinario" formControlName="escuela_veterinario">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Teléfono:</label>
+                        <input type="number" class="form-control" name="telefono_veterinario" formControlName="telefono_veterinario">
+                    </div>
+                    <button class="btn btn-primary mt-2">Agregar</button>
+                    <button type="button" class="btn btn-primary mt-2" (click)="ActualizarVeterinario()">Actualizar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="list-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Domicilio</th>
+                        <th scope="col">Escuela</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elemento of dataVeterinario">
+                        <th scope="row">{{elemento.codigo_veterinario}}</th>
+                        <td>{{elemento.nombre_veterinario}}</td>
+                        <td>{{elemento.domicilio_veterinario}}</td>
+                        <td>{{elemento.escuela_veterinario}}</td>
+                        <td>{{elemento.telefono_veterinario}}</td>
+                        <td>
+                            <button class="mt-2" (click)="editarVeterinario(elemento)">
+                                <img src="assets/img/editar.png" width="50" height="30" alt="Editar" />
+                            </button>
+                            <button  class="mt-2" (click)="eliminar(elemento.codigo_veterinario)">
+                                <img src="assets/img/eliminar.jpg" width="50" height="30" alt="Eliminar" />
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

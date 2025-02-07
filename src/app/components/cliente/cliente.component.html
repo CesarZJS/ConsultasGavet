@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cliente.component.css">
+    <title>Mantenimiento Cliente</title>
+</head>
+<body>
+    <h1>Mantenimiento Cliente</h1>
+    <br>
+    <div class="container">     
+        <div class="card form-container">
+            <div class="card-body">
+                <form [formGroup]="formCliente" (ngSubmit)="AgregarCliente()">
+
+                    <div class="form-group">
+                        <label class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" name="nombre_cliente" formControlName="nombre_cliente">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Domicilio:</label>
+                        <input type="text" class="form-control" name="domicilio_cliente" formControlName="domicilio_cliente">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Teléfono:</label>
+                        <input type="number" class="form-control" name="telefono_cliente" formControlName="telefono_cliente">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Dni:</label>
+                        <input type="number" class="form-control" name="dni_cliente" formControlName="dni_cliente">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Edad:</label>
+                        <input type="number" class="form-control" name="edad_cliente" formControlName="edad_cliente">
+                    </div>
+                    <button class="btn btn-primary mt-2">Agregar</button>
+                    <button type="button" class="btn btn-primary mt-2" (click)="ActualizarCliente()">Actualizar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="list-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Domicilio</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Dni</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elemento of dataCliente">
+                        <th scope="row">{{elemento.codigo_cliente}}</th>
+                        <td>{{elemento.nombre_cliente}}</td>
+                        <td>{{elemento.domicilio_cliente}}</td>
+                        <td>{{elemento.telefono_cliente}}</td>
+                        <td>{{elemento.dni_cliente}}</td>
+                        <td>{{elemento.edad_cliente}}</td>
+                        <td>
+                            <button class="mt-2" (click)="editarCliente(elemento)">
+                                <img src="assets/img/editar.png" width="50" height="30" alt="Editar" />
+                            </button>
+                            <button class="mt-2" (click)="eliminar(elemento.codigo_cliente)">
+                                <img src="assets/img/eliminar.jpg" width="50" height="30" alt="Eliminar" />    
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
