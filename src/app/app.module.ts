@@ -18,7 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MascotaComponent,
     VeterinarioComponent,
     CitaComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
